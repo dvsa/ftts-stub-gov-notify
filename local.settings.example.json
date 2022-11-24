@@ -1,0 +1,11 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureFunctionsJobHost__logging__logLevel__Default": "Trace",
+        "FUNCTIONS_EXTENSION_VERSION": "~4",
+        "FUNCTIONS_WORKER_RUNTIME": "node",
+        "NODE_ENV": "development",
+        "WEBSITE_NODE_DEFAULT_VERSION":"~14",
+        "WEBSITE_SITE_NAME": "ftts-stub-gov-notify"
+    }
+  }

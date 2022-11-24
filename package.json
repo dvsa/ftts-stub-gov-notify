@@ -1,0 +1,77 @@
+{
+    "name": "ftts-stub-gov-notify",
+    "version": "2.0.0",
+    "description": "Stub service to use in place of GovUK Notify",
+    "engines": {
+        "node": ">=14.x",
+        "npm": ">=7.20"
+    },
+    "main": "index.js",
+    "scripts": {
+        "build": "rimraf dist && tsc",
+        "copy-config": "cp local.settings.example.json local.settings.json",
+        "func:start": "npm run build && func extensions install && func start --port 7002",
+        "lint": "eslint --ext .js,.ts .",
+        "lint:report": "eslint --ext .js,.ts . -f json -o lint/report.json",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --verbose --coverage",
+        "sonar": "npm run test:coverage && npm run lint:report && sonar-scanner",
+        "coverage-ci": "jest --coverage --reporters=jest-junit --reporters=jest-standard-reporter --ci"
+    },
+    "husky": {
+        "hooks": {
+            "pre-push": "npm run test"
+        }
+    },
+    "dependencies": {
+        "faker": "5.5.3"
+    },
+    "devDependencies": {
+        "@azure/functions": "1.2.3",
+        "@babel/core": "7.15.8",
+        "@babel/plugin-proposal-class-properties": "7.14.5",
+        "@babel/plugin-proposal-decorators": "7.15.8",
+        "@babel/preset-env": "7.15.8",
+        "@babel/preset-typescript": "7.15.0",
+        "@dvsa/eslint-config-ts": "2.4.0",
+        "@types/faker": "5.5.9",
+        "@types/jest": "27.0.2",
+        "@types/node": "14.14.31",
+        "babel-jest": "27.3.1",
+        "factory.ts": "0.5.2",
+        "husky": "7.0.4",
+        "jest": "27.3.1",
+        "jest-junit": "13.0.0",
+        "jest-standard-reporter": "2.0.0",
+        "rimraf": "3.0.2",
+        "typescript": "4.4.4"
+    },
+    "jest": {
+        "coverageDirectory": "<rootDir>/coverage",
+        "coverageReporters": [
+            "lcov",
+            "html"
+        ],
+        "collectCoverageFrom": [
+            "src/**/*.{ts,tsx,js}"
+        ],
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js"
+        ],
+        "roots": [
+            "<rootDir>/tests"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@ssh.dev.azure.com:v3/DvsaDev/ftts-beta/ftts-beta"
+    },
+    "optionalDependencies": {
+        "fsevents": "2.3.2"
+    },
+    "author": "",
+    "license": "ISC"
+}
